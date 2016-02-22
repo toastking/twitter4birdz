@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B7ECFFA3E28D5309667537C /* Pods_Twitter4Birdz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F204259991EBA6D4E038643C /* Pods_Twitter4Birdz.framework */; };
 		C973A7901C7ABEE500BB3F40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973A78F1C7ABEE500BB3F40 /* AppDelegate.swift */; };
 		C973A7921C7ABEE500BB3F40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973A7911C7ABEE500BB3F40 /* ViewController.swift */; };
 		C973A7951C7ABEE500BB3F40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C973A7931C7ABEE500BB3F40 /* Main.storyboard */; };
 		C973A7971C7ABEE500BB3F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C973A7961C7ABEE500BB3F40 /* Assets.xcassets */; };
 		C973A79A1C7ABEE500BB3F40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C973A7981C7ABEE500BB3F40 /* LaunchScreen.storyboard */; };
+		C97465F01C7AC48200BD5163 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97465EF1C7AC48200BD5163 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1D969CD166FD9B2D9AE237 /* Pods-Twitter4Birdz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter4Birdz.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter4Birdz/Pods-Twitter4Birdz.release.xcconfig"; sourceTree = "<group>"; };
 		C973A78C1C7ABEE500BB3F40 /* Twitter4Birdz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter4Birdz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C973A78F1C7ABEE500BB3F40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C973A7911C7ABEE500BB3F40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		C973A7961C7ABEE500BB3F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C973A7991C7ABEE500BB3F40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C973A79B1C7ABEE500BB3F40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C97465EF1C7AC48200BD5163 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		DFBED73D8522078868479BEB /* Pods-Twitter4Birdz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter4Birdz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter4Birdz/Pods-Twitter4Birdz.debug.xcconfig"; sourceTree = "<group>"; };
+		F204259991EBA6D4E038643C /* Pods_Twitter4Birdz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter4Birdz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B7ECFFA3E28D5309667537C /* Pods_Twitter4Birdz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003C7714C9DC7D612139FE7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F204259991EBA6D4E038643C /* Pods_Twitter4Birdz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0996FADCF50AD1D041E3E9E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFBED73D8522078868479BEB /* Pods-Twitter4Birdz.debug.xcconfig */,
+				4A1D969CD166FD9B2D9AE237 /* Pods-Twitter4Birdz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C973A7831C7ABEE500BB3F40 = {
 			isa = PBXGroup;
 			children = (
 				C973A78E1C7ABEE500BB3F40 /* Twitter4Birdz */,
 				C973A78D1C7ABEE500BB3F40 /* Products */,
+				0996FADCF50AD1D041E3E9E5 /* Pods */,
+				003C7714C9DC7D612139FE7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C973A78F1C7ABEE500BB3F40 /* AppDelegate.swift */,
+				C97465EF1C7AC48200BD5163 /* LogInViewController.swift */,
 				C973A7911C7ABEE500BB3F40 /* ViewController.swift */,
 				C973A7931C7ABEE500BB3F40 /* Main.storyboard */,
 				C973A7961C7ABEE500BB3F40 /* Assets.xcassets */,
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C973A79E1C7ABEE500BB3F40 /* Build configuration list for PBXNativeTarget "Twitter4Birdz" */;
 			buildPhases = (
+				006453D9E896A90C7C60D59B /* Check Pods Manifest.lock */,
 				C973A7881C7ABEE500BB3F40 /* Sources */,
 				C973A7891C7ABEE500BB3F40 /* Frameworks */,
 				C973A78A1C7ABEE500BB3F40 /* Resources */,
+				A38FCDFBE9D57DCCA256A19A /* Embed Pods Frameworks */,
+				39A94B5ECC3D773B96A9CCEF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +161,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		006453D9E896A90C7C60D59B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		39A94B5ECC3D773B96A9CCEF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Twitter4Birdz/Pods-Twitter4Birdz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A38FCDFBE9D57DCCA256A19A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Twitter4Birdz/Pods-Twitter4Birdz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C973A7881C7ABEE500BB3F40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -138,6 +216,7 @@
 			files = (
 				C973A7921C7ABEE500BB3F40 /* ViewController.swift in Sources */,
 				C973A7901C7ABEE500BB3F40 /* AppDelegate.swift in Sources */,
+				C97465F01C7AC48200BD5163 /* LogInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +325,7 @@
 		};
 		C973A79F1C7ABEE500BB3F40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFBED73D8522078868479BEB /* Pods-Twitter4Birdz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Twitter4Birdz/Info.plist;
@@ -257,6 +337,7 @@
 		};
 		C973A7A01C7ABEE500BB3F40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A1D969CD166FD9B2D9AE237 /* Pods-Twitter4Birdz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Twitter4Birdz/Info.plist;
@@ -285,6 +366,7 @@
 				C973A7A01C7ABEE500BB3F40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
