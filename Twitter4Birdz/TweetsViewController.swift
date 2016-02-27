@@ -1,20 +1,31 @@
 //
-//  LogInViewController.swift
+//  TweetsViewController.swift
 //  Twitter4Birdz
 //
-//  Created by Matt on 2/21/16.
+//  Created by Matt on 2/27/16.
 //  Copyright © 2016 Matt Del Signore. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
 
-class LogInViewController: UIViewController {
+class TweetsViewController: UIViewController {
 
+    var tweets :[Tweet]!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //fetch my tweets
+        TwitterClient.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
+            //store tweets and reload tableview
+            self.tweets = tweets
+            
+            for tweet in tweets{
+                print(tweet.text)
+            }
+            }) { (error:NSError) -> () in
+                print(error.localizedDescription)
+        }
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,18 +33,6 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logInButtonPress(sender: AnyObject) {
-        
-       TwitterClient.sharedInstance.login({ () -> () in
-            print("logged in!")
-        
-            //segue to the tweets screen
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
-        }) { (error:NSError) -> () in
-            print(error.localizedDescription)
-        }
-        
-    }
 
     /*
     // MARK: - Navigation
