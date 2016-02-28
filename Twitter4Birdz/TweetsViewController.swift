@@ -21,6 +21,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension //set thiis so autolayout will decide the height
         tableView.estimatedRowHeight = 200
         
+        //add the refresh controller
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
         //fetch my tweets
         TwitterClient.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
             //store tweets and reload tableview
@@ -103,6 +108,20 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
+    }
+    
+    func refreshAction(refreshControl: UIRefreshControl){
+        //fetch my tweets
+        TwitterClient.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
+            //store tweets and reload tableview
+            self.tweets = tweets
+            
+            //reload the table
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+            }) { (error:NSError) -> () in
+                print(error.localizedDescription)
+        }
     }
 
     /*
