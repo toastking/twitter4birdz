@@ -49,6 +49,32 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func retweet(id:Int,success: (Tweet)->(), failure: (NSError)->()){
+        POST("1.1/statuses/retweet/\(id).json", parameters: nil, constructingBodyWithBlock: nil, progress: nil, success: { (task:NSURLSessionDataTask, tweetjson:AnyObject?) -> Void in
+            let tweetdict = tweetjson as! NSDictionary
+            let tweet = Tweet(dictionary: tweetdict)
+            
+            success(tweet)
+            
+            }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
+                print(error.localizedDescription)
+                failure(error)
+        }
+    }
+    
+    func favorite(id:Int,success: (Tweet)->(), failure: (NSError)->()){
+        POST("1.1/favorites/create.json", parameters: ["id":"\(id)"], constructingBodyWithBlock: nil, progress: nil, success: { (task:NSURLSessionDataTask, tweetjson:AnyObject?) -> Void in
+            let tweetdict = tweetjson as! NSDictionary
+            let tweet = Tweet(dictionary: tweetdict)
+            
+            success(tweet)
+            
+            }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
+                print(error.localizedDescription)
+                failure(error)
+        }
+    }
+    
     func login(sucess: ()->(), failure:(NSError)->() ){
         loginFailure = failure
         loginSuccess = sucess

@@ -43,6 +43,52 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func onFavoritePress(sender: AnyObject) {
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! tweetCell
+        
+        let indexPath = tableView.indexPathForCell(cell) //get indexp[ath of the cell we selected
+        
+        let tweet = tweets[(indexPath?.row)!] //get the tweet from our array
+        let id = tweet.id
+        
+        //now send the request
+        TwitterClient.sharedInstance.favorite(id!, success: { (tweet:Tweet) -> () in
+            print("successful favorite!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with favorite")
+                print(error.localizedDescription)
+        }
+        
+        //update the count 
+        tweet.favorites! += 1
+        tableView.reloadData()
+    }
+    @IBAction func onRetweetPress(sender: AnyObject?) {
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! tweetCell
+        
+        let indexPath = tableView.indexPathForCell(cell) //get indexp[ath of the cell we selected
+        
+        let tweet = tweets[(indexPath?.row)!] //get the tweet from our array
+        let id = tweet.id
+        
+        //now send the request
+        TwitterClient.sharedInstance.retweet(id!, success: { (tweet:Tweet) -> () in
+            print("successful retweet!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with retweet")
+                print(error.localizedDescription)
+        }
+        
+        //update the count
+        tweet.retweets! += 1
+        tableView.reloadData()
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! tweetCell
         //assign the business
