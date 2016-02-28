@@ -18,6 +18,7 @@
 		C973A79A1C7ABEE500BB3F40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C973A7981C7ABEE500BB3F40 /* LaunchScreen.storyboard */; };
 		C97465F01C7AC48200BD5163 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97465EF1C7AC48200BD5163 /* LogInViewController.swift */; };
 		C980B5771C82405F003610F1 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980B5761C82405F003610F1 /* TweetsViewController.swift */; };
+		C98C1E671C83692A006EE04C /* tweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C1E661C83692A006EE04C /* tweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C973A79B1C7ABEE500BB3F40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97465EF1C7AC48200BD5163 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C980B5761C82405F003610F1 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		C98C1E661C83692A006EE04C /* tweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tweetCell.swift; sourceTree = "<group>"; };
 		DFBED73D8522078868479BEB /* Pods-Twitter4Birdz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter4Birdz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter4Birdz/Pods-Twitter4Birdz.debug.xcconfig"; sourceTree = "<group>"; };
 		F204259991EBA6D4E038643C /* Pods_Twitter4Birdz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter4Birdz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				C973A7961C7ABEE500BB3F40 /* Assets.xcassets */,
 				C973A7981C7ABEE500BB3F40 /* LaunchScreen.storyboard */,
 				C973A79B1C7ABEE500BB3F40 /* Info.plist */,
+				C98C1E661C83692A006EE04C /* tweetCell.swift */,
 			);
 			path = Twitter4Birdz;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				C904D1D01C7D3CBA00936D69 /* User.swift in Sources */,
 				C904D1D21C7D3CC200936D69 /* Tweet.swift in Sources */,
 				C973A7921C7ABEE500BB3F40 /* ViewController.swift in Sources */,
+				C98C1E671C83692A006EE04C /* tweetCell.swift in Sources */,
 				C973A7901C7ABEE500BB3F40 /* AppDelegate.swift in Sources */,
 				C980B5771C82405F003610F1 /* TweetsViewController.swift in Sources */,
 				C904D1D41C7D52D600936D69 /* TwitterClient.swift in Sources */,
