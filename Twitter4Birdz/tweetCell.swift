@@ -21,13 +21,19 @@ class tweetCell: UITableViewCell {
     
     var tweet: Tweet!{
         didSet{
+            
+            //get the current date
+            let date = NSDate()
+            let difference = date.timeIntervalSinceDate(tweet.timestamp!)
+            
+            let timeElapsed = Int(difference)
             profileImage.setImageWithURL(tweet.profileImageUrl!)
-            accountNameLabel.text = (tweet.name as? String)
-            usernameLabel.text = tweet.userName as? String
-            timestampLabel.text = tweet.timestamp as? String
-            tweettextLabel.text = tweet.text as? String
-            retweetcountLabel.text = tweet.retweets as? String
-            favoritecountLabel.text = (tweet.favorites as? String)
+            accountNameLabel.text = (tweet.name as! String)
+            usernameLabel.text = "@" + (tweet.userName as! String)
+            timestampLabel.text = String(difference)
+            tweettextLabel.text = tweet.text as! String
+            retweetcountLabel.text = String(tweet.retweets!)
+            favoritecountLabel.text = String(tweet.favorites!)
         }
     }
     override func awakeFromNib() {
