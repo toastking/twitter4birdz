@@ -11,6 +11,7 @@ import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
     
+   
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com/"), consumerKey: "nIsN2mtfEGI5SkQmU88juuUU1", consumerSecret: "Tbp6jcZsEFSMAT1ZaMRDJqx3Dsz95jnLUlm5VODVJoOugySH2R")
     var loginSuccess: (() -> ())?
     var loginFailure : ((NSError)->())?
@@ -30,18 +31,21 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func currentAccount(){
+    func currentAccount(success: (User) -> (), failure: (NSError)->()){
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task:NSURLSessionDataTask, response:AnyObject?) -> Void in
             let userDict = response as! NSDictionary
             
             //initialize a user object
             let user = User(dictionary: userDict)
             
+            //call the success function
+            success(user)
+            
             print("name: \(user.name)")
             print("screen name: \(user.screenName)")
             print("description: \(user.profileDescription)")
             }, failure: { (task:NSURLSessionDataTask?, error:NSError) -> Void in
-                
+                failure(error)
         })
     }
     
@@ -63,13 +67,31 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func logout(){
+        //handle logout
+        User.currentUser = nil
+        deauthorize()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(User.userDidLogoutStr, object: nil)
+    }
+    
     func handleOpenUrl(url: NSURL){
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         
         TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
             print("token recieved")
             
-            self.loginSuccess!()
+            //get the current account for the user
+            self.currentAccount({ (user:User) -> () in
+                //set the user using the setter in the user class
+                User.currentUser = user
+                self.loginSuccess?()
+                
+                }, failure: { (error:NSError) -> () in
+                    self.loginFailure?(error)
+            })
+            
+            
             
             
             }) { (error: NSError!) -> Void in

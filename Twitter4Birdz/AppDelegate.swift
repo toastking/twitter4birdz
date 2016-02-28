@@ -17,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        if User.currentUser != nil{
+            print("There is a current user")
+            
+            //load the info for the current user and bypass authorization
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("tweetsNavigationController")
+            
+            //set the navigation to the root view controller to bypass the login step
+            window?.rootViewController = viewController
+        }else{
+            print("There is no current user")
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(User.userDidLogoutStr, object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
+            //load the info for the current user and bypass authorization
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            //set the view controller back to the main view controller
+            self.window?.rootViewController = viewController
+
+        }
+        
         return true
     }
 
