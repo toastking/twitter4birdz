@@ -229,8 +229,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="accountNameLabel" destination="uJ0-5A-JNg" id="VTF-zU-4cP"/>
+                                            <outlet property="favoriteButton" destination="XKb-by-mzd" id="FA7-sl-Nt3"/>
                                             <outlet property="favoritecountLabel" destination="WlH-lS-G9y" id="3mV-KA-ysk"/>
                                             <outlet property="profileImage" destination="0LK-Wh-6a9" id="GSf-KN-t56"/>
+                                            <outlet property="retweetButton" destination="jc4-1I-SbF" id="eBe-TT-tWY"/>
                                             <outlet property="retweetcountLabel" destination="vdn-xd-pjg" id="3w7-r4-OOh"/>
                                             <outlet property="timestampLabel" destination="QQv-o2-aCG" id="ePX-5S-bC3"/>
                                             <outlet property="tweettextLabel" destination="bKt-Lz-egm" id="eB9-Bs-tJL"/>
@@ -290,13 +292,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gon-Zm-xlG">
-                                        <rect key="frame" x="71" y="22" width="48" height="20.5"/>
+                                        <rect key="frame" x="71" y="22" width="296" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekh-vg-9Hv">
-                                        <rect key="frame" x="71" y="46" width="82" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekh-vg-9Hv">
+                                        <rect key="frame" x="71" y="46" width="296" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -324,6 +326,7 @@
                                     <constraint firstItem="bmx-sL-lw9" firstAttribute="leading" secondItem="0Wj-ah-v5T" secondAttribute="leading" constant="8" id="Ppg-l6-A7q"/>
                                     <constraint firstItem="gon-Zm-xlG" firstAttribute="leading" secondItem="gy1-tz-2GA" secondAttribute="trailing" constant="8" id="Rus-07-vaB"/>
                                     <constraint firstItem="ekh-vg-9Hv" firstAttribute="top" secondItem="gon-Zm-xlG" secondAttribute="bottom" constant="3" id="Z0M-0x-Rg0"/>
+                                    <constraint firstAttribute="trailing" secondItem="gon-Zm-xlG" secondAttribute="trailing" constant="8" id="aTn-3z-VaF"/>
                                     <constraint firstItem="gy1-tz-2GA" firstAttribute="top" secondItem="0Wj-ah-v5T" secondAttribute="top" constant="16" id="fmc-yS-js0"/>
                                     <constraint firstAttribute="trailing" secondItem="bmx-sL-lw9" secondAttribute="trailing" constant="8" id="qsR-V8-xFy"/>
                                     <constraint firstAttribute="bottom" secondItem="XDa-46-sC8" secondAttribute="bottom" constant="10" id="v88-7U-veB"/>
@@ -484,6 +487,15 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="favoritesLabel" destination="zYF-6m-1XY" id="YHs-WD-K5F"/>
+                        <outlet property="nameLabel" destination="gon-Zm-xlG" id="pM3-nV-C7f"/>
+                        <outlet property="profileImageView" destination="gy1-tz-2GA" id="nKv-yN-QL1"/>
+                        <outlet property="retweetsLabel" destination="Ttj-Z9-MTl" id="aLO-TB-ycx"/>
+                        <outlet property="timestampLabel" destination="XDa-46-sC8" id="bPd-c4-kXN"/>
+                        <outlet property="tweettextLabel" destination="bmx-sL-lw9" id="2aa-hi-r12"/>
+                        <outlet property="usernameLabel" destination="ekh-vg-9Hv" id="qJw-7f-iGH"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2027.5" y="331.5"/>
