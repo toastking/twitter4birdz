@@ -19,6 +19,9 @@ class Tweet: NSObject {
     var name: NSString?
     var dateString: NSString?
     var id: Int?
+    //whether or not the user favorited or retweeted a tweet
+    var favorited: Bool?
+    var retweeted: Bool?
     
     init(dictionary:NSDictionary){
         text = dictionary["text"] as? String
@@ -44,6 +47,9 @@ class Tweet: NSObject {
         userName = userDictionary["screen_name"] as! String
         
         name = userDictionary["name"] as! String
+        
+        favorited = (userDictionary["favorited"] as! Bool)
+        retweeted = (userDictionary["retweeted"] as! Bool)
     }
     
     class func TweetsWithArray(dictionaries: [NSDictionary])->[Tweet]{

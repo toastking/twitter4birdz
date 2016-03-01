@@ -19,6 +19,8 @@ class tweetCell: UITableViewCell {
     @IBOutlet weak var retweetcountLabel: UILabel!
     @IBOutlet weak var favoritecountLabel: UILabel!
     
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     var tweet: Tweet!{
         didSet{
             
@@ -50,9 +52,21 @@ class tweetCell: UITableViewCell {
             accountNameLabel.text = (tweet.name as! String)
             usernameLabel.text = "@" + (tweet.userName as! String)
             timestampLabel.text = String(timeElapsed) + timeUnits
-            tweettextLabel.text = tweet.text as! String
+            tweettextLabel.text = (tweet.text as! String)
             retweetcountLabel.text = String(tweet.retweets!)
             favoritecountLabel.text = String(tweet.favorites!)
+            
+            //change the buttons 
+            if tweet.retweeted! == true {
+                retweetButton.setImage(UIImage(named: "retweet_pressed.png"), forState: .Normal)
+            }
+            
+            //change the buttons
+            if tweet.favorited! == true {
+                retweetButton.setImage(UIImage(named: "favorite_pressed.png"), forState: .Normal)
+            }
+            
+            
         }
     }
     override func awakeFromNib() {
