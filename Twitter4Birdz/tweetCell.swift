@@ -26,11 +26,30 @@ class tweetCell: UITableViewCell {
             let date = NSDate()
             let difference = date.timeIntervalSinceDate(tweet.timestamp!)
             
-            let timeElapsed = Int(difference)
+            var timeElapsed = Int(difference)
+            var timeUnits = "s"
+            if timeElapsed > 60{
+                timeElapsed /= 60
+                timeUnits = "m"
+                if timeElapsed > 60 {
+                    timeElapsed /= 60
+                    timeUnits = "h"
+                    
+                    if timeElapsed > 24{
+                        timeElapsed /= 24
+                        timeUnits = "d"
+                        
+                        if timeElapsed > 7{
+                            timeElapsed /= 7
+                            timeUnits = "w"
+                        }
+                    }
+                }
+            }
             profileImage.setImageWithURL(tweet.profileImageUrl!)
             accountNameLabel.text = (tweet.name as! String)
             usernameLabel.text = "@" + (tweet.userName as! String)
-            timestampLabel.text = String(difference)
+            timestampLabel.text = String(timeElapsed) + timeUnits
             tweettextLabel.text = tweet.text as! String
             retweetcountLabel.text = String(tweet.retweets!)
             favoritecountLabel.text = String(tweet.favorites!)
