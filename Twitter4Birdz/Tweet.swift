@@ -17,6 +17,7 @@ class Tweet: NSObject {
     var profileImageUrl: NSURL?
     var userName: NSString?
     var name: NSString?
+    var userID: String?
     var dateString: NSString?
     var id: Int?
     //whether or not the user favorited or retweeted a tweet
@@ -45,6 +46,8 @@ class Tweet: NSObject {
         profileImageUrl = NSURL( string: userDictionary["profile_image_url"] as! String)
         
         userName = userDictionary["screen_name"] as! String
+        
+        userID = userDictionary["id_str"] as! String
         
         name = userDictionary["name"] as! String
         

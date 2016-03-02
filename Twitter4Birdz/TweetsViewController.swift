@@ -146,9 +146,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if segue.identifier == "tweetToProfileSegue"{
+            let view = sender!.superview //cast the cell the segue was sent from
+            let cell = view!!.superview as! tweetCell
+            if let indexPath = tableView.indexPathForCell(cell){
+                let profileController = segue.destinationViewController as! ProfileViewController
+                let tweet = tweets[indexPath.row]
+                profileController.screenName = tweet.userName as! String//set the tweet to fill in the index path view controller
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
         }
     }
-        
-    
 
 }

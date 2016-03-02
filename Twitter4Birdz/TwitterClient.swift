@@ -31,8 +31,41 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    //function fetches a user timeline
+    func userTimeline(screenName: String, success: ([Tweet])->(), failure: (NSError)->()){
+        GET("1.1/statuses/user_timeline.json", parameters: ["screen_name": screenName, "include_rts": true], progress: nil, success: { (Task: NSURLSessionDataTask, response:AnyObject?) -> Void in
+            let tweetDict = response as! [NSDictionary]
+            let tweets = Tweet.TweetsWithArray(tweetDict)
+            
+            //run the success closure function
+            success(tweets)
+            
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                //run the failure closure function
+                failure(error)
+        })
+    }
+    
     func currentAccount(success: (User) -> (), failure: (NSError)->()){
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task:NSURLSessionDataTask, response:AnyObject?) -> Void in
+            let userDict = response as! NSDictionary
+            
+            //initialize a user object
+            let user = User(dictionary: userDict)
+            
+            //call the success function
+            success(user)
+            
+            print("name: \(user.name)")
+            print("screen name: \(user.screenName)")
+            print("description: \(user.profileDescription)")
+            }, failure: { (task:NSURLSessionDataTask?, error:NSError) -> Void in
+                failure(error)
+        })
+    }
+    
+    func getUser(screenName: String, success: (User) -> (), failure: (NSError)->()){
+        GET("1.1/users/show.json", parameters: ["screen_name":screenName], progress: nil, success: { (task:NSURLSessionDataTask, response:AnyObject?) -> Void in
             let userDict = response as! NSDictionary
             
             //initialize a user object
