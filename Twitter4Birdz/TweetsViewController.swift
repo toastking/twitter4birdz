@@ -144,7 +144,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
         }
+        
+        if segue.identifier == "tweetToProfileSegue"{
+        }
     }
+        
     
 
 }
