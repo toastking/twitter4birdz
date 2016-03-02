@@ -69,6 +69,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         //update the count 
         tweet.favorites! += 1
+        tweet.favorited = true
+        
         tableView.reloadData()
     }
     @IBAction func onRetweetPress(sender: AnyObject?) {
@@ -92,6 +94,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         //update the count
         tweet.retweets! += 1
+        tweet.retweeted = true
         tableView.reloadData()
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{

@@ -48,8 +48,8 @@ class Tweet: NSObject {
         
         name = userDictionary["name"] as! String
         
-        favorited = (userDictionary["favorited"] as! Bool)
-        retweeted = (userDictionary["retweeted"] as! Bool)
+        favorited = (dictionary["favorited"] as! Bool)
+        retweeted = (dictionary["retweeted"] as! Bool)
     }
     
     class func TweetsWithArray(dictionaries: [NSDictionary])->[Tweet]{

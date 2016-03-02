@@ -11,6 +11,8 @@ import AFNetworking
 
 class tweetCell: UITableViewCell {
 
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var accountNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -19,8 +21,6 @@ class tweetCell: UITableViewCell {
     @IBOutlet weak var retweetcountLabel: UILabel!
     @IBOutlet weak var favoritecountLabel: UILabel!
     
-    @IBOutlet weak var retweetButton: UIButton!
-    @IBOutlet weak var favoriteButton: UIButton!
     var tweet: Tweet!{
         didSet{
             
@@ -63,7 +63,7 @@ class tweetCell: UITableViewCell {
             
             //change the buttons
             if tweet.favorited! == true {
-                retweetButton.setImage(UIImage(named: "favorite_pressed.png"), forState: .Normal)
+                favoriteButton.setImage(UIImage(named: "favorite_pressed.png"), forState: .Normal)
             }
             
             

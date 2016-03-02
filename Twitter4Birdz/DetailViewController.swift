@@ -17,22 +17,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tweettextLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileView: UIImageView!
     
-    var tweet:Tweet! {
-        didSet{
-            profileImageView.setImageWithURL(tweet.profileImageUrl!)
-            nameLabel.text = (tweet.name as! String)
-            usernameLabel.text = (tweet.userName as! String)
-            tweettextLabel.text = (tweet.text as! String)
-            timestampLabel.text = String(tweet.timestamp)
-            retweetsLabel.text = String(tweet.retweets)
-            favoritesLabel.text = String(tweet.favorites)
-        }
-    }//the tweet model we will use to populate our view
+    var tweet:Tweet! //the tweet model we will use to populate our view
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(tweet.profileImageUrl!)
+        profileView.setImageWithURL(tweet.profileImageUrl!)
+        nameLabel.text = (tweet.name as! String)
+        usernameLabel.text = (tweet.userName as! String)
+        tweettextLabel.text = (tweet.text as! String)
+        timestampLabel.text = String(tweet.timestamp!)
+        retweetsLabel.text = String(tweet.retweets!)
+        favoritesLabel.text = String(tweet.favorites!)
         // Do any additional setup after loading the view.
         tweettextLabel.preferredMaxLayoutWidth = tweettextLabel.frame.size.width
         
