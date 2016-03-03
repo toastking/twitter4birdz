@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileView: UIImageView!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
     var tweet:Tweet! //the tweet model we will use to populate our view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,40 @@ class DetailViewController: UIViewController {
         tweettextLabel.preferredMaxLayoutWidth = tweettextLabel.frame.size.width
         
     }
+    
+    @IBAction func onFavoritePress(sender: AnyObject) {
+        let id = tweet.id
+        
+        //now send the request
+        TwitterClient.sharedInstance.favorite(id!, success: { (tweet:Tweet) -> () in
+            print("successful favorite!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with favorite")
+                print(error.localizedDescription)
+        }
+        
+        //update the count
+        tweet.favorites! += 1
+        tweet.favorited = true
+    }
+    @IBAction func onRetweetPress(sender: AnyObject?) {
+        let id = tweet.id
+        
+        //now send the request
+        TwitterClient.sharedInstance.retweet(id!, success: { (tweet:Tweet) -> () in
+            print("successful retweet!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with retweet")
+                print(error.localizedDescription)
+        }
+        
+        //update the count
+        tweet.retweets! += 1
+        tweet.retweeted = true
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

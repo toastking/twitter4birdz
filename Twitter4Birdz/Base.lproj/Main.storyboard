@@ -441,7 +441,7 @@
                                         </constraints>
                                         <state key="normal" title="Retweet" image="retweet"/>
                                         <connections>
-                                            <action selector="onRetweetPress:" destination="eFb-JE-DIP" eventType="touchUpInside" id="jG9-f8-5SW"/>
+                                            <action selector="onRetweetPress:" destination="gBN-lx-jN8" eventType="touchUpInside" id="6kZ-pu-ePt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO4-LK-EEV">
@@ -452,7 +452,7 @@
                                         </constraints>
                                         <state key="normal" title="favorite" image="favorite"/>
                                         <connections>
-                                            <action selector="onFavoritePress:" destination="eFb-JE-DIP" eventType="touchUpInside" id="s2R-gQ-3Q5"/>
+                                            <action selector="onFavoritePress:" destination="gBN-lx-jN8" eventType="touchUpInside" id="qNZ-7l-T2Q"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="ouC-8q-PIP">
@@ -530,9 +530,11 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="favoriteButton" destination="lO4-LK-EEV" id="RSA-MV-CtG"/>
                         <outlet property="favoritesLabel" destination="zYF-6m-1XY" id="YHs-WD-K5F"/>
                         <outlet property="nameLabel" destination="gon-Zm-xlG" id="pM3-nV-C7f"/>
                         <outlet property="profileView" destination="gy1-tz-2GA" id="Bxb-AV-usj"/>
+                        <outlet property="retweetButton" destination="6dM-pg-r3P" id="kfR-68-xDJ"/>
                         <outlet property="retweetsLabel" destination="Ttj-Z9-MTl" id="aLO-TB-ycx"/>
                         <outlet property="timestampLabel" destination="XDa-46-sC8" id="bPd-c4-kXN"/>
                         <outlet property="tweettextLabel" destination="bmx-sL-lw9" id="2aa-hi-r12"/>
@@ -776,17 +778,6 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-0m-yzw">
-                                                    <rect key="frame" x="126" y="63" width="25" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="35l-HM-YXn"/>
-                                                        <constraint firstAttribute="height" constant="25" id="fPe-C5-zVy"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Retweet" image="retweet"/>
-                                                    <connections>
-                                                        <action selector="onRetweetPress:" destination="eFb-JE-DIP" eventType="touchUpInside" id="Qsw-MS-sBt"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THO-Xk-Rgl">
                                                     <rect key="frame" x="235" y="68" width="8" height="16"/>
                                                     <constraints>
@@ -809,7 +800,7 @@
                                                     </constraints>
                                                     <state key="normal" title="favorite" image="favorite"/>
                                                     <connections>
-                                                        <action selector="onFavoritePress:" destination="eFb-JE-DIP" eventType="touchUpInside" id="Xsq-zB-5SB"/>
+                                                        <action selector="onFavoritePress:" destination="use-Ir-cef" eventType="touchUpInside" id="WhT-uv-PO2"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-UP-P2b">
@@ -826,6 +817,17 @@
                                                         <constraint firstAttribute="height" constant="45" id="QsK-73-6Dy"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-0m-yzw">
+                                                    <rect key="frame" x="126" y="63" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="35l-HM-YXn"/>
+                                                        <constraint firstAttribute="height" constant="25" id="fPe-C5-zVy"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Retweet" image="retweet"/>
+                                                    <connections>
+                                                        <action selector="onRetweetPress:" destination="use-Ir-cef" eventType="touchUpInside" id="v4f-BS-ARv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="a30-LZ-bhZ" secondAttribute="trailing" constant="8" id="2qg-la-Toc"/>
@@ -959,6 +961,6 @@
         <image name="retweet" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ywB-sM-jcv"/>
+        <segue reference="sis-V7-GB1"/>
     </inferredMetricsTieBreakers>
 </document>
