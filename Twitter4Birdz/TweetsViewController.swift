@@ -155,6 +155,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         }
+        
+        if segue.identifier == "tweetToComposeSegue"{
+            let composeController = segue.destinationViewController as! ComposeViewController
+            composeController.user = User.cUser //set the user to be the current user
+        }
+        
     }
 
 }

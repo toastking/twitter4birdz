@@ -15,6 +15,19 @@ class TwitterClient: BDBOAuth1SessionManager {
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com/"), consumerKey: "nIsN2mtfEGI5SkQmU88juuUU1", consumerSecret: "Tbp6jcZsEFSMAT1ZaMRDJqx3Dsz95jnLUlm5VODVJoOugySH2R")
     var loginSuccess: (() -> ())?
     var loginFailure : ((NSError)->())?
+    
+    
+    //handle posting a tweet
+    func tweet(tweetText : String, success: (Tweet) -> (), failure: (NSError) -> ()){
+        POST("1.1/statuses/update.json", parameters: ["status":tweetText], progress: nil,success: { (task:NSURLSessionDataTask, response:AnyObject?) -> Void in
+            //success functions
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            success(tweet)
+            }) { (errorTask:NSURLSessionDataTask?, error:NSError) -> Void in
+                //error task
+                failure(error)
+        }
+    }
 
     //function fetches the home timeline
     func homeTimeline(success: ([Tweet])->(), failure: (NSError)->()){
