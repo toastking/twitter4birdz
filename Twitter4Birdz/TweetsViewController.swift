@@ -161,6 +161,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             composeController.user = User.cUser //set the user to be the current user
         }
         
+        if segue.identifier == "meToUserSegue"{
+            let profileController = segue.destinationViewController as! ProfileViewController
+            print(User.cUser?.screenName as! String)
+            profileController.screenName = User.cUser?.screenName as! String
+        }
+        
     }
 
 }

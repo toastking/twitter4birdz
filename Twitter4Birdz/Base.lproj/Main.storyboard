@@ -285,7 +285,7 @@
                             <barButtonItem title="Me" id="2wo-ld-U6q">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="use-Ir-cef" kind="show" identifier="timelineToProfileSegue" id="g5H-3n-6Ra"/>
+                                    <segue destination="use-Ir-cef" kind="show" identifier="meToUserSegue" id="XCv-hW-dur"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -297,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3H-1s-cz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442.5" y="331.5"/>
+            <point key="canvasLocation" x="1442.5" y="315.5"/>
         </scene>
         <!--New Tweet-->
         <scene sceneID="3Rh-AF-89K">
@@ -1084,6 +1084,6 @@
         <image name="retweet" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g5H-3n-6Ra"/>
+        <segue reference="XCv-hW-dur"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.user = user
             //set the user's attributes to the labels
             self.headerImageView.setImageWithURL(user.profileHeaderUrl!)
-            self.userNameLabel.text = user.screenName as! String
+            self.userNameLabel.text = "@" + (user.screenName as! String)
             self.profileImageView.setImageWithURL(user.profileUrl!)
             self.nameLabel.text = user.name as! String
             self.tweetCountLabel.text = String(user.tweetsCount!)
