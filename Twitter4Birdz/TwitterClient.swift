@@ -16,7 +16,6 @@ class TwitterClient: BDBOAuth1SessionManager {
     var loginSuccess: (() -> ())?
     var loginFailure : ((NSError)->())?
     
-    
     //handle posting a tweet
     func tweet(tweetText : String, success: (Tweet) -> (), failure: (NSError) -> ()){
         POST("1.1/statuses/update.json", parameters: ["status":tweetText], progress: nil,success: { (task:NSURLSessionDataTask, response:AnyObject?) -> Void in
@@ -44,9 +43,39 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    //function fetches the home timeline
+    func homeTimeline(maxId: Int, success: ([Tweet])->(), failure: (NSError)->()){
+        GET("1.1/statuses/home_timeline.json", parameters: ["max_id":maxId], progress: nil, success: { (Task: NSURLSessionDataTask, response:AnyObject?) -> Void in
+            let tweetDict = response as! [NSDictionary]
+            let tweets = Tweet.TweetsWithArray(tweetDict)
+            
+            //run the success closure function
+            success(tweets)
+            
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                //run the failure closure function
+                failure(error)
+        })
+    }
+    
     //function fetches a user timeline
     func userTimeline(screenName: String, success: ([Tweet])->(), failure: (NSError)->()){
         GET("1.1/statuses/user_timeline.json", parameters: ["screen_name": screenName, "include_rts": true], progress: nil, success: { (Task: NSURLSessionDataTask, response:AnyObject?) -> Void in
+            let tweetDict = response as! [NSDictionary]
+            let tweets = Tweet.TweetsWithArray(tweetDict)
+            
+            //run the success closure function
+            success(tweets)
+            
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                //run the failure closure function
+                failure(error)
+        })
+    }
+    
+    //function fetches a user timeline
+    func userTimeline(screenName: String, maxId: Int, success: ([Tweet])->(), failure: (NSError)->()){
+        GET("1.1/statuses/user_timeline.json", parameters: ["screen_name": screenName, "max_id":maxId, "include_rts": true], progress: nil, success: { (Task: NSURLSessionDataTask, response:AnyObject?) -> Void in
             let tweetDict = response as! [NSDictionary]
             let tweets = Tweet.TweetsWithArray(tweetDict)
             

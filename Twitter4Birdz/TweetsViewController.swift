@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets :[Tweet]!
+    
+    var isMoreDataLoading = false
+    
+    var hud = MBProgressHUD()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,6 +130,53 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             refreshControl.endRefreshing()
             }) { (error:NSError) -> () in
                 print(error.localizedDescription)
+        }
+    }
+    
+    //infinite scroll code
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        print("scrolling")
+        if (!isMoreDataLoading) {
+            print("loading")
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                print("load tweets")
+                isMoreDataLoading = true
+                
+                hud.show(true)
+                
+                //get the max id
+                let lastIndex = tweets.count-1
+                let maxId = tweets[lastIndex].id!
+                
+                //remove the last index
+                tweets.removeAtIndex(lastIndex)
+                
+                
+                // Code to load more results
+                TwitterClient.sharedInstance.homeTimeline(maxId+1, success: { (tweets:[Tweet]) -> () in
+                    
+                    self.tweets.appendContentsOf(tweets)
+                    
+                    for tweet in tweets{
+                        print(tweet.text)
+                    }
+                    
+                    self.isMoreDataLoading = false
+                    
+                    self.tableView.reloadData()
+                    
+                    self.hud.hide(true)
+                    
+                    }, failure: { (error:NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }
         }
     }
 

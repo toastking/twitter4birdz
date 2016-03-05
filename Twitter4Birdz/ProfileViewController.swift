@@ -8,8 +8,9 @@
 
 import UIKit
 import AFNetworking
+import MBProgressHUD
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImageView: UIImageView!
@@ -23,6 +24,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var user:User!
     var tweets: [Tweet]!
     var screenName: String!
+    var isMoreDataLoading = false
+    var hud = MBProgressHUD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +80,47 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
+    
+    //infinite scroll code
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                isMoreDataLoading = true
+                
+                hud.show(true)
+                
+                //get the max id
+                let lastIndex = tweets.count-1
+                let maxId = tweets[lastIndex].id!
+                
+                //remove the last index
+                tweets.removeAtIndex(lastIndex)
+                
+                
+                // Code to load more results
+                TwitterClient.sharedInstance.userTimeline(user.screenName as! String, maxId: maxId, success: { (tweets:[Tweet]) -> () in
+                    
+                    self.tweets.appendContentsOf(tweets)
+                    
+                    self.isMoreDataLoading = false
+                    
+                    self.tableView.reloadData()
+                    
+                    self.hud.hide(true)
+                    
+                    }, failure: { (error:NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }
+        }
+    }
+
     
     @IBAction func onFavoritePress(sender: AnyObject) {
         let button = sender as! UIButton
